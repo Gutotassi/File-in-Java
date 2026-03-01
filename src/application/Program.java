@@ -9,7 +9,7 @@ public class Program {
 
         String path = "/var/tmp/out.txt";
 
-        try(BufferedWriter bufferedWriter = new BufferedWriter(new FileWriter(path))){
+        try(BufferedWriter bufferedWriter = new BufferedWriter(new FileWriter(path, true))){
             for (String line : lines){
                 bufferedWriter.write(line);
                 bufferedWriter.newLine();
