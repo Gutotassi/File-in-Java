@@ -4,7 +4,20 @@ import java.io.*;
 
 public class Program {
     public static void main(String[] args) {
-        String path = "/home/guto_tassi/Documents/lattes.txt";
+
+        String[] lines = new String[]  {"Good morning", "Good afternoon", "Good night"};
+
+        String path = "/var/tmp/out.txt";
+
+        try(BufferedWriter bufferedWriter = new BufferedWriter(new FileWriter(path))){
+            for (String line : lines){
+                bufferedWriter.write(line);
+                bufferedWriter.newLine();
+            }
+        } catch (IOException e) {
+            System.out.println("Error: " + e.getMessage());
+        }
+
         try (BufferedReader bufferedReader = new BufferedReader(new FileReader(path))){
             String line = bufferedReader.readLine();
 
@@ -12,8 +25,7 @@ public class Program {
                 System.out.println(line);
                 line = bufferedReader.readLine();
             }
-        }
-        catch (IOException e) {
+        } catch (Exception e) {
             System.out.println("Error: " + e.getMessage());
         }
     }
